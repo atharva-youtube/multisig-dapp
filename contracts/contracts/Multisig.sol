@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-contract Multisig {
+import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
+
+contract Multisig is Initializable {
     uint256 private _requiredSignatures;
     address[] private _owners;
 
@@ -19,7 +21,7 @@ contract Multisig {
     event TransactionSigned(uint256 transactionId, address signer);
     event TransactionExecuted(uint256 transactionId, address executer);
 
-    constructor(address[] memory owners, uint256 requiredSignatures) {
+    function initialize(address[] memory owners, uint256 requiredSignatures) public initializer {
         require(owners.length > 0, "At least one owner required");
         require(requiredSignatures > 0 && requiredSignatures <= owners.length, "Invalid number of required signatures");
 
