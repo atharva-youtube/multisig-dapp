@@ -12,7 +12,7 @@ contract MultisigFactory {
     mapping(address => EnumerableSet.AddressSet) private deployments;
 
     event ImplementationUpdated(address _caller, address _implementation);
-    event ContractDeployed(address _deployer, address _deployedContract, address _implementation);
+    event ContractDeployed(address indexed _deployer, address _deployedContract, address _implementation);
 
     constructor(address _implementation) {
         owner = msg.sender;
