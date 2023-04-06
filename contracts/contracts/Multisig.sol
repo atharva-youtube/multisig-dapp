@@ -18,7 +18,7 @@ contract Multisig is Initializable {
     Transaction[] private _transactions;
 
     event TransactionCreated(uint256 transactionId, address to, uint256 value, bytes data);
-    event TransactionSigned(uint256 transactionId, address signer);
+    event TransactionSigned(uint256 indexed transactionId, address indexed signer);
     event TransactionExecuted(uint256 transactionId, address executer);
 
     function initialize(address[] memory owners, uint256 requiredSignatures) public initializer {
